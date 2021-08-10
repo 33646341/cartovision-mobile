@@ -5,13 +5,7 @@
     <!--设备跳转-->
     <script type="text/javascript">
         function redirect() {
-            // var msg = "";
-            // if (confirm(msg) == true) {
-            //     return true;
-            // } else {
-            //     return false;
-            // }
-            // location.href = href;
+            location.href = href;
         }
         var url_parts = document.URL.split('?');
         var query = url_parts.length == 2 ? ('?' + url_parts[1]) : '';
@@ -22,10 +16,10 @@
         console.log("query:" + query);
         console.log("ua:" + ua);
         if (/windows|ipad|ipod/.test(ua)) {
-            href = '/' + query;
+            href = 'http://www.cartovisionwhu.cn/' + query;
             setTimeout(redirect, 0);
         } else if (/iphone|android/.test(ua)) {
-            href = '/mobile/index.html' + query;
+            href = 'http://m.cartovisionwhu.cn/' + query;
         } else if (/windows phone|blackberry/.test(ua)) {
             location.href = '/';
         } else {
@@ -40,7 +34,8 @@
     <script type="text/javascript" src="https://q2048.gitee.io/static/cartovision/quote_js/jquery.form.js"></script>
     <script src="https://q2048.gitee.io/static/cartovision/js/siginUp.js?v=20200911"></script>
     <!--<script src="https://q2048.gitee.io/static/cartovision/mobile/jq.js"></script>-->
-    <script src="https://q2048.gitee.io/static/cartovision/mobile/js/app.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="//code.bdstatic.com/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
 </head>
 
 <body>
@@ -281,8 +276,8 @@
             <span class="right">报名</span>
             <div class="clear"></div>
         </div>
-        <iframe height="700" width="340" src="https://wj.qq.com/s2/7494513/64e8/" frameborder="0"
-            allowfullscreen></iframe>
+        <!-- <iframe height="700" width="340" src="https://wj.qq.com/s2/7494513/64e8/" frameborder="0"
+            allowfullscreen></iframe> -->
         <!--
         <form name="signUpForm" id="signUpForm" action="/signUp/ajax_signUp.action" method="post" class="recruit-form">
                     <div class="form-group">
@@ -343,39 +338,37 @@
                     
                 </form>-->
 
-        <!--
-        <form action="">
+        <form id="signUpForm">
             <label for="">姓名</label>
-            <input type="text" placeholder="姓名">
+            <input type="text" name="name" id="name" placeholder="姓名">
             <br>
             <label for="">学号</label>
-            <input type="text" placeholder="学号">
+            <input type="text" name="studyNum" id="studyNum" placeholder="学号">
             <br>
             <label for="">Q Q</label>
-            <input type="text" class="input1" placeholder="Q Q">
+            <input type="text" class="input1" name="qq" id="qq" placeholder="Q Q">
             <br>
-            <label for="" class="label1">部门意向</label>
-            <select name="" id="">
-                <option value="">
+            <label for="" class="label1" >部门意向</label>
+            <select name="dept" id="dept">
+                <option value="0">
                     地图设计部
                 </option>
-                <option value="">
+                <option value="1">
                     软件开发部
+                </option>
+                <option value="2">
+                    综合事务部
                 </option>
             </select>
             <label for="" class="label1 left">自我介绍 </label>
-            <textarea></textarea>
+            <textarea name="introduction" id="introduction"></textarea>
             <div class="btnbox">
-                <button class="left">submit</button>
-                <button class="right">reset</button>
+                <button type="button" onclick="signUp('#signUpForm')" class="left">submit</button>
+                <button type="reset" class="right">reset</button>
                 <div class="clear"></div>
             </div>
         </form>
-        
-        -->
     </div>
-
-
 
     <div class="footer">
         <div class="y_lian left">
