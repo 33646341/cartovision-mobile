@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--设备跳转-->
+    <script type="text/javascript">
+        function redirect() {
+            // var msg = "";
+            // if (confirm(msg) == true) {
+            //     return true;
+            // } else {
+            //     return false;
+            // }
+            location.href = href;
+        }
+        var url_parts = document.URL.split('?');
+        var query = url_parts.length == 2 ? ('?' + url_parts[1]) : '';
+        var href = '/';
+        var ua = navigator.userAgent.toLowerCase();
+        console.log("url:" + document.URL);
+        console.log("url_parts:" + url_parts);
+        console.log("query:" + query);
+        console.log("ua:" + ua);
+        if (/windows|ipad|ipod/.test(ua)) {
+            href = '/' + query;
+            setTimeout(redirect, 0);
+        } else if (/iphone|android/.test(ua)) {
+            href = '/mobile/index.html' + query;
+        } else if (/windows phone|blackberry/.test(ua)) {
+            location.href = '/';
+        } else {
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARTOVISION慧图社</title>
+    <link rel="stylesheet" href="https://q2048.gitee.io/static/cartovision/mobile/css/bootstrap.css">
+    <link rel="stylesheet" href="https://q2048.gitee.io/static/cartovision/mobile/css/app.css">
+    <script type="text/javascript" src="https://q2048.gitee.io/static/cartovision/quote_js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="https://q2048.gitee.io/static/cartovision/quote_js/jquery.form.js"></script>
+    <script src="https://q2048.gitee.io/static/cartovision/js/siginUp.js?v=20200911"></script>
+    <!--<script src="https://q2048.gitee.io/static/cartovision/mobile/jq.js"></script>-->
+    <script src="https://q2048.gitee.io/static/cartovision/mobile/js/app.js"></script>
+</head>
+
+<body>
+    <script>
+        (function (win, lib) {
+            var doc = win.document;
+            var docEl = doc.documentElement;
+            var dpr = 1;
+            var tid;
+            var flexible = lib.flexible || (lib.flexible = {});
+            docEl.setAttribute('data-dpr', 1);
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                if (width / dpr >= 750) {
+                    width = 750 * dpr;
+                }
+                var rem = width / 10;
+                docEl.style.fontSize = rem + 'px';
+                flexible.rem = win.rem = rem;
+            }
+            win.addEventListener('resize', function () {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+            win.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+            if (doc.readyState === 'complete') {
+                doc.body.style.fontSize = 12 * dpr + 'px';
+            } else {
+                doc.addEventListener('DOMContentLoaded', function (e) {
+                    doc.body.style.fontSize = 12 * dpr + 'px';
+                }, false);
+            }
+            refreshRem();
+            flexible.dpr = dpr;
+            flexible.refreshRem = refreshRem;
+            flexible.rem2px = function (d) {
+                var val = parseFloat(d) * this.rem;
+                if (typeof d === 'string' && d.match(/rem$/)) {
+                    val += 'px';
+                }
+                return val;
+            };
+            flexible.px2rem = function (d) {
+                var val = parseFloat(d) / this.rem;
+                if (typeof d === 'string' && d.match(/px$/)) {
+                    val += 'rem';
+                }
+                return val;
+            };
+        })(window, window.lib || (window.lib = {}));
+    </script>
+    <div class="newhead" id="home">
+        <img src="https://q2048.gitee.io/static/cartovision/mobile/image/icon.png" alt="">
+        <span class="glyphicon glyphicon-list icnsize" id="menu"></span>
+        <div class="biaoti">
+            <p>武汉大学慧图社</p>
+            <span>武汉大学地理信息系统开发及地图制图设计与研究的学生爱好者的聚集地</span>
+            <span>以技术交流和项目实践为目的，致力于高校智慧校园系列GIS系统建设</span>
+            <span>用多彩地图丰富学生生活，追求在提升个人技术能力的同时，创造实用价值</span>
+        </div>
+        <div class="sketch">
+            <div class="sketch-text animated zoomIn">
+                <h1 class="sketch-content" data-content="N">N</h1>
+                <h1 class="sketch-content" data-content="O">O</h1>
+                <h1 class="sketch-content" data-content="I">I</h1>
+                <h1 class="sketch-content" data-content="S">S</h1>
+                <h1 class="sketch-content" data-content="I">I</h1>
+                <h1 class="sketch-content" data-content="V">V</h1>
+                <h1 class="sketch-content" data-content="R">R</h1>
+                <h1 class="sketch-content" data-content="O">O</h1>
+                <h1 class="sketch-content" data-content="T">T</h1>
+                <h1 class="sketch-content" data-content="R">R</h1>
+                <h1 class="sketch-content" data-content="A">A</h1>
+                <h1 class="sketch-content" data-content="C">C</h1>
+            </div>
+        </div>
+    </div>
+    <div class="cbl">
+        <div class="lists">
+            <ul>
+                <li>
+                    <a href="#home" class="home">Home</a>
+                </li>
+                <li>
+                    <a href="#about" class="about">About</a>
+                </li>
+                <li>
+                    <a href="#Work" class="work">Work</a>
+                </li>
+                <li>
+                    <a href="#Structure" class="Structure">Structure</a>
+                </li>
+                <li>
+                    <a href="#Sign" class="Sign"> Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="about" id="about">
+        <p class="pull-left">
+            关于
+        </p>
+        <p class="pull-right" style="font-weight: 100;">
+            About
+        </p>
+        <div class="clearfix"></div>
+        <span style="margin-top:10px;">
+            我们的梦想是开发出完善的武大地理信息系统；我们希望成为武大GIS的领先者、传播者；我们一直在路上
+        </span>
+        <br>
+        <span>
+            <span class="span1">全称：</span>武汉大学CARTOVISION慧图社
+        </span>
+        <br>
+        <span>
+            <span class="span1">前身：</span>慧图社工作室
+        </span>
+        <br>
+        <span>
+            <span class="span1">年龄：</span>3
+        </span>
+        <br>
+        <span>
+            <span class="span1">研究方向：</span>地信制图、GIS开发
+        </span>
+        <br>
+        <span>
+            <span class="span1">指导老师：</span>蔡忠亮教授
+        </span>
+        <br>
+        <span>
+            <span class="span1">团队人数：</span>56+
+        </span>
+        <br>
+        <span>
+            <span class="span1">团队精神：</span>自强、弘毅、求是、拓新
+        </span>
+        <ul>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/age.png" alt=""></li>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/num.png" alt=""></li>
+            <li style="margin-right: 0;"><img src="https://q2048.gitee.io/static/cartovision/mobile/image/direction.png"
+                    alt=""></li>
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    <div class="work" id="Work">
+        <p class="pull-left">
+            作品
+        </p>
+        <p class="pull-right" style="font-weight: 100;">
+            Work
+        </p>
+        <div class="clearfix"></div>
+        <span style="margin-top:10px;">
+            三年以来，在校团委的正确领导和院系的大力支持下，我们已经取得了十分丰厚的成果，我们开发出了武大官网的校园地图，在武大GIS系统建设方面也有了丰富的经验。
+        </span>
+        <ul>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/map.png" alt=""></li>
+            <li style="margin-right: 0;"><img loading="lazy"
+                    src="https://q2048.gitee.io/static/cartovision/mobile/image/map2.png" alt=""></li>
+            <!-- <li style="margin-right: 0;"><img src="https://q2048.gitee.io/static/cartovision/mobile/image/map3.png" alt=""></li> -->
+            <div class="clearfix"></div>
+            <img src="https://q2048.gitee.io/static/cartovision/mobile/image/map3.png" alt="" class="imgblock">
+        </ul>
+    </div>
+    <div class="team">
+        <p>
+            优秀的团队是我们成功的最大因素
+        </p>
+        <span>我们相互鼓励、相互学习，拥有共同的热爱</span>
+        <img src="https://q2048.gitee.io/static/cartovision/mobile/image/56.png" alt="">
+    </div>
+    <div class="jiagou" id="Structure">
+        <p class="pull-left">
+            架构
+        </p>
+        <p class="pull-right" style="font-weight: 100;">
+            Structure
+        </p>
+        <div class="clearfix"></div>
+        <span class="span2">
+            地图设计部
+        </span>
+        <span>
+            慧图地图设计部主要负责地图制图产品、UI、UE和开发产品的设计，在这里，你将学到很多地图制图方法，部门内部将不定期举办小课堂，帮助部门成员掌握常用制图软件如Arcmap、Coreldraw、Photoshop的使用。
+        </span>
+        <ul>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/photoshop.svg" alt=""></li>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/premiere.svg" alt=""></li>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/illustrator.svg" alt=""></li>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/dreamweaver.svg" alt=""></li>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/after-effects.svg" alt=""></li>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/indesign.svg" alt=""></li>
+            <li style="margin-right: 0;"><img
+                    src="https://q2048.gitee.io/static/cartovision/mobile/image/app/ArcMap.png" alt=""></li>
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    <div class="jiagou1">
+        <span class="span2">
+            程序开发部
+        </span>
+        <span>
+            慧图程序开发部主要负责项目的设计与开发，涵盖web端、Android端、IOS端、小程序等，开发并维护校官网地图产品，并以此为基础，融入当下阶段流行技术，开发出实用有趣的校园产品。在这里，你将学会一系列的程序开发方法，提升程序开发水平。
+        </span>
+        <ul>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/android.svg" alt=""></li>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/wechat.svg" alt=""></li>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/worldwide.svg" alt=""></li>
+            <li style="margin-right: 0;"><img
+                    src="https://q2048.gitee.io/static/cartovision/mobile/image/app/internet.svg" alt=""></li>
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    <div class="jiagou2">
+        <span class="span2">
+            综合事务部
+        </span>
+        <span>
+            运营部内部设置策划、宣传、财务三个部门，主要负责社团内外的运营事务。
+        </span>
+        <ul>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/microsoft.svg" alt=""></li>
+            <li><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/tencent.svg" alt=""></li>
+            <li style="margin-right: 0;"><img src="https://q2048.gitee.io/static/cartovision/mobile/image/app/weibo.svg"
+                    alt=""></li>
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    <div class="form" id="Sign">
+        <div class="form_top">
+            <span class="left">Sign Up</span>
+            <span class="right">报名</span>
+            <div class="clear"></div>
+        </div>
+        <iframe height="700" width="340" src="https://wj.qq.com/s2/7494513/64e8/" frameborder="0"
+            allowfullscreen></iframe>
+        <!--
+        <form name="signUpForm" id="signUpForm" action="/signUp/ajax_signUp.action" method="post" class="recruit-form">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label" style="font-size: 20px;">姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" regr="\S" tip="姓名不能为空" class="form-control input-lg my-form" name="name" id="name" placeholder="姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="studyNum" class="col-sm-2 control-label" style="font-size: 20px;">学号</label>
+                        <div class="col-sm-10">
+                            <input type="text" regr="\S" tip="学号不能为空" class="form-control input-lg my-form" name="studyNum" id="studyNum" placeholder="学号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="qq" class="col-sm-2 control-label" style="font-size: 20px;">QQ</label>
+                        <div class="col-sm-10">
+                            <input type="text" regr="\S" tip="QQ不能为空" class="form-control my-form input-lg" name="qq" id="qq" placeholder="QQ">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" style="font-size: 20px;">部门意向</label>
+                        <div class="col-sm-10">
+                            <select name="dept" id="dept" class="form-control input-lg my-form col-sm-10">
+                                <option value="0">地图设计部</option>
+                                <option value="1">软件开发部</option>
+                                <option value="2">综合事务部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" style="font-size: 20px;">自我介绍</label>
+                        <div class="col-sm-10">
+                            <textarea regr="\S" tip="自我介绍不能为空" name="introduction" id="introduction" class="form-control input-lg my-form" rows="3"></textarea>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="btnbox">
+                		<button onclick="ajax_siginUp('#signUpForm')" type="button" class="left">submit</button>
+                		<button type="reset" class="right">reset</button>
+                		<div class="clear"></div>
+            		</div>
+                    <!--
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="bg-1">
+                                <button onclick="ajax_siginUp('#signUpForm')" type="button" class="button button--pipaluk button--inverted button--text-thick btn-submit" style="margin-left: 10%;padding-bottom: 20px;">
+                                    submit
+                                </button>
+                                <button type="reset" class="button button--pipaluk button--inverted button--text-thick btn-reset" style="margin-left: 10%;padding-bottom: 20px;">
+                                    reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </form>-->
+
+        <!--
+        <form action="">
+            <label for="">姓名</label>
+            <input type="text" placeholder="姓名">
+            <br>
+            <label for="">学号</label>
+            <input type="text" placeholder="学号">
+            <br>
+            <label for="">Q Q</label>
+            <input type="text" class="input1" placeholder="Q Q">
+            <br>
+            <label for="" class="label1">部门意向</label>
+            <select name="" id="">
+                <option value="">
+                    地图设计部
+                </option>
+                <option value="">
+                    软件开发部
+                </option>
+            </select>
+            <label for="" class="label1 left">自我介绍 </label>
+            <textarea></textarea>
+            <div class="btnbox">
+                <button class="left">submit</button>
+                <button class="right">reset</button>
+                <div class="clear"></div>
+            </div>
+        </form>
+        
+        -->
+    </div>
+
+
+
+    <div class="footer">
+        <div class="y_lian left">
+            <span>友情链接</span> <br>
+            <a href="https://www.ogiscience.com/">OGIScience</a>
+        </div>
+        <div class="lianxi right">
+            <span>联系方式</span> <br>
+            迎新群：937668842 <br>
+            微信公众号：武大慧图 <br>
+            技术交流：2309780282@qq.com <br>
+        </div>
+        <div class="clear"></div>
+        <div class="wx">
+            <ul>
+                <li>
+                    <img src="https://q2048.gitee.io/static/cartovision/mobile/image/tencent.jpg" alt="">
+                    <p>关注我们</p>
+                </li>
+                <li>
+                    <img src="https://q2048.gitee.io/static/cartovision/image/welcome.jpg" alt="">
+                    <p>迎新群</p>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="best">Copyright@2020.CARTOVISION.</div>
+    </div>
+</body>
+
+</html>
